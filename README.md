@@ -13,7 +13,8 @@ A progress tracker application to record your workout exercises and regimes and 
 
 ## What we are currently working on
 
-[ ] User Authentication / Omni-Authentication
-[ ] Angular.js Single Page application
-[ ] Vega.js to display relevant data
-[ ] Landing dashboard
+- [ ] User Authentication / Omni-Authentication
+- [ ] Angular.js Single Page application
+- [ ] Vega.js to display relevant data
+- [ ] Landing dashboard
+- [ ] Ability to add new exercises and data
