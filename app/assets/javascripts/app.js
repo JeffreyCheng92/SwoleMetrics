@@ -1,10 +1,12 @@
 angular.module('SwoleMetrics', [
         'ui.router',
         'templates',
-        'Devise',
-        // 'SwoleMetrics.authentication'
+        'Devise'
     ])
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    .config(function ($stateProvider,
+                      $urlRouterProvider,
+                      $locationProvider
+                    ) {
       /**
        * Routes and States
        */
@@ -14,8 +16,10 @@ angular.module('SwoleMetrics', [
               templateUrl: 'dashboard.html',
               controller: 'DashboardCtrl',
               onEnter: ['$state', 'Auth', function($state, Auth) {
-                if (Auth._currentUser == null) {
-                  $state.go('login')
+                if (localStorage.getItem('currentUser')) {
+                  Auth._currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                } else if (Auth._currentUser == null) {
+                  $state.go('login');
                 }
               }]
           })
@@ -24,6 +28,9 @@ angular.module('SwoleMetrics', [
             templateUrl: 'auth/login.html',
             controller: 'AuthCtrl',
             onEnter: ['$state', 'Auth', function($state, Auth) {
+              if (localStorage.getItem('currentUser')) {
+                Auth._currentUser = JSON.parse(localStorage.getItem('currentUser'));
+              }
               if (Auth._currentUser) {
                 $state.go('dashboard')
               }
@@ -34,6 +41,9 @@ angular.module('SwoleMetrics', [
             templateUrl: 'auth/register.html',
             controller: 'AuthCtrl',
             onEnter: ['$state', 'Auth', function($state, Auth) {
+              if (localStorage.getItem('currentUser')) {
+                Auth._currentUser = JSON.parse(localStorage.getItem('currentUser'));
+              }
               if (Auth._currentUser) {
                 $state.go('dashboard')
               }
