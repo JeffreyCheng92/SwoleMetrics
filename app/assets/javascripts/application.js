@@ -12,6 +12,7 @@
 //
 //= require angular
 //= require angular-ui-router
+//= require angular-devise
 //= require angular-rails-templates
 //= require jquery
 //= require jquery_ujs

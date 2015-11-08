@@ -15,6 +15,7 @@ gem 'devise'
 
 # Use angular as frontend framework
 gem 'angular-rails-templates'
+gem 'angular_csrf'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
