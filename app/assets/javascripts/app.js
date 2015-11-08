@@ -15,13 +15,16 @@ angular.module('SwoleMetrics', [
               url: '/dashboard',
               templateUrl: 'dashboard.html',
               controller: 'DashboardCtrl',
-              onEnter: ['$state', 'Auth', function($state, Auth) {
-                if (localStorage.getItem('currentUser')) {
-                  Auth._currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                } else if (Auth._currentUser == null) {
-                  $state.go('login');
-                }
-              }]
+              onEnter: ['$state', '$timeout', 'Auth',
+                function($state, $timeout, Auth) {
+                  if (localStorage.getItem('currentUser')) {
+                    Auth._currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                  } else if (Auth._currentUser == null) {
+                    $timeout(function() {
+                      $state.go('login');
+                    }, 0);
+                  }
+                }]
           })
           .state('login', {
             url: '/login',
@@ -48,7 +51,7 @@ angular.module('SwoleMetrics', [
                 $state.go('dashboard')
               }
             }]
-          });
+          })
 
       // default fall back route
       $urlRouterProvider.otherwise('/dashboard');
