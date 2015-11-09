@@ -10,7 +10,8 @@
 <body ng-app="SwoleMetrics">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<%= yield %>
+  <div ng-include="'nav/nav.html'"></div>
+  <%= yield %>
 
 </body>
 </html>

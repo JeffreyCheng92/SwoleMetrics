@@ -40,6 +40,8 @@ GEM
       railties (>= 3.1)
       sprockets (~> 2)
       tilt
+    angular_csrf (0.1.4)
+      rails (>= 3.1)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
@@ -163,6 +165,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates
+  angular_csrf
   annotate
   better_errors
   binding_of_caller
