@@ -52,6 +52,21 @@ angular.module('SwoleMetrics', [
               }
             }]
           })
+          .state('profile', {
+            url: '/profile',
+            templateUrl: 'user/profile.html',
+            controller: 'ProfileCtrl',
+            onEnter: ['$state', '$timeout', 'Auth',
+              function($state, $timeout, Auth) {
+                if (localStorage.getItem('currentUser')) {
+                  Auth._currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                } else if (Auth._currentUser == null) {
+                  $timeout(function() {
+                    $state.go('login');
+                  }, 0);
+                }
+              }]
+          })
 
       // default fall back route
       $urlRouterProvider.otherwise('/dashboard');
