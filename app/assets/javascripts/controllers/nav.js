@@ -8,7 +8,7 @@ angular.module('SwoleMetrics')
       if (localStorage.getItem('currentUser')) {
         $scope.user = JSON.parse(localStorage.getItem('currentUser'));
       }
-      
+
       $scope.$on('devise:new-registration', function (e, user){
         $scope.user = user;
         localStorage.setItem('currentUser', JSON.stringify(user));

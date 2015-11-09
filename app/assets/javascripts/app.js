@@ -13,7 +13,7 @@ angular.module('SwoleMetrics', [
       $stateProvider
           .state('dashboard', {
               url: '/dashboard',
-              templateUrl: 'dashboard.html',
+              templateUrl: 'dashboard/dashboard.html',
               controller: 'DashboardCtrl',
               onEnter: ['$state', '$timeout', 'Auth',
                 function($state, $timeout, Auth) {
@@ -52,6 +52,21 @@ angular.module('SwoleMetrics', [
               }
             }]
           })
+          .state('profile', {
+            url: '/profile',
+            templateUrl: 'user/profile.html',
+            controller: 'ProfileCtrl',
+            onEnter: ['$state', '$timeout', 'Auth',
+              function($state, $timeout, Auth) {
+                if (localStorage.getItem('currentUser')) {
+                  Auth._currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                } else if (Auth._currentUser == null) {
+                  $timeout(function() {
+                    $state.go('login');
+                  }, 0);
+                }
+              }]
+          })
 
       // default fall back route
       $urlRouterProvider.otherwise('/dashboard');
@@ -59,22 +74,3 @@ angular.module('SwoleMetrics', [
       // enable HTML5 Mode for SEO
       $locationProvider.html5Mode(true);
     });
-
-// angular.module('SwoleMetrics.authentication', [])
-//   .config(function($httpProvider){
-//       // Intercepts every http request.  If the response is success, pass it through.  If the response is an
-//       // error, and that error is 401 (unauthorised) then the user isn't logged in, redirect to the login page
-//   var interceptor = function($q, $location, $rootScope) {
-//     return {
-//       'responseError': function(rejection) {
-//         if (rejection.status == 401) {
-//           // $rootScope.$broadcast('event:unauthorized');
-//           $location.path('/login')
-//           return rejection;
-//         }
-//         return $q.reject(rejection);
-//       }
-//     };
-//   };
-//   $httpProvider.interceptors.push(interceptor);
-// });
