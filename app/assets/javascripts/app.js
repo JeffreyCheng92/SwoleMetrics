@@ -13,7 +13,7 @@ angular.module('SwoleMetrics', [
       $stateProvider
           .state('dashboard', {
               url: '/dashboard',
-              templateUrl: 'dashboard.html',
+              templateUrl: 'dashboard/dashboard.html',
               controller: 'DashboardCtrl',
               onEnter: ['$state', '$timeout', 'Auth',
                 function($state, $timeout, Auth) {
