@@ -1,18 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  # def index
-  #   @user = User.all
-  # end
-  #
-  # def new
-  #   @user = User.new
-  # end
-
   def show
-    fail
-    @user = current_user
-    render json: @user, status: 200
+    @user = User.find(params[:id])
+    render json: { user_id: @user.id,
+                   email: @user.email }, status: 200
   end
 
   def create
