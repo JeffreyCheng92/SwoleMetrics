@@ -1,12 +1,18 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @user = User.all
-  end
+  # def index
+  #   @user = User.all
+  # end
+  #
+  # def new
+  #   @user = User.new
+  # end
 
-  def new
-    @user = User.new
+  def show
+    fail
+    @user = current_user
+    render json: @user, status: 200
   end
 
   def create
