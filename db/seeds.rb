@@ -6,21 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create!(
-  :email => 'novak@gmail.com',
-  :password => 'password',
-  :password_confirmation => 'password'
+  :email => 'gizmo@gmail.com',
+  :password => '123123',
+  :password_confirmation => '123123'
 )
 
 User.create!(
-  :email => 'andy@gmail.com',
-  :password => 'password',
-  :password_confirmation => 'password'
+  :email => 'earl@gmail.com',
+  :password => '123123',
+  :password_confirmation => '123123'
 )
 
 User.create!(
-  :email => 'roger@gmail.com',
-  :password => 'password',
-  :password_confirmation => 'password'
+  :email => 'markov@gmail.com',
+  :password => '123123',
+  :password_confirmation => '123123'
 )
 
 1.upto(3) do |user_id|
