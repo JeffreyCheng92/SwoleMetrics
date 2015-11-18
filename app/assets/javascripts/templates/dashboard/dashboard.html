@@ -1,6 +1,9 @@
 <div class="container">
     <h1>Dashboard</h1>
-    <ul>
-        <li ng-repeat="thing in things">{{thing}}</li>
-    </ul>
+    <h1>Exercises</h1>
+    <ol>
+      <li ng-repeat='exercise in exercises'>
+        <exercise-item exercise="exercise"></exercise-item>
+      </li>
+    </ol>
 </div>
