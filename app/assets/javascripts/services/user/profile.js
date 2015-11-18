@@ -15,8 +15,4 @@ angular.module('SwoleMetrics')
         return d.reject(err);
       };
     };
-    // return $http.get('/users/' + Auth._currentUser.id)
-    //  .then(successFn, errorFn);
-    //
-
   }]);

@@ -1,7 +1,11 @@
 angular.module('SwoleMetrics')
-  .controller('DashboardCtrl', ['$scope', 'Auth',
-    function ($scope, Auth) {
-      $scope.things = ['Angular', 'Rails 4.1', 'UI Router', 'Together!!'];
+  .controller('DashboardCtrl', ['$scope', 'Auth', 'profile',
+    function ($scope, Auth, profile) {
+
+      profile().then(function(user_data) {
+        $scope.exercises = user_data.exercises;
+      });
+
       $scope.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 ]);

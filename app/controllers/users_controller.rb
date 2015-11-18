@@ -3,8 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: { user_id: @user.id,
-                   email: @user.email }, status: 200
+    render json: { user: { user_id: @user.id,
+                           email: @user.email },
+                   exercises: @user.exercises }, status: 200
   end
 
   def create
